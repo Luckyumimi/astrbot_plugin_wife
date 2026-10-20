@@ -1,0 +1,80 @@
+{
+  "message_template": {
+    "description": "抽取结果的文案",
+    "hint": "支持占位符：{name} 群昵称、{qq} QQ 号、{group} 群号。示例：{name} ({qq})",
+    "type": "string",
+    "default": "“您今天的对象是 {name} ({qq})”"
+  },
+  "send_avatar": {
+    "description": "发送对方头像",
+    "hint": "关闭后只发文字（头像取自 q1.qlogo.cn）。",
+    "type": "bool",
+    "default": true
+  },
+  "mention_target": {
+    "description": "抽取时 @ 对方",
+    "hint": "开启后消息里会带上 @，在 QQ 里可以提醒对方。",
+    "type": "bool",
+    "default": true
+  },
+  "recall_minutes": {
+    "description": "抽取结果多少分钟后撤回",
+    "hint": "0 = 不撤回；可填 1-60。超过 2 分钟需要机器人在该群是管理员（见 admin_groups），否则会自动按 2 分钟撤回。",
+    "type": "int",
+    "default": 0
+  },
+  "admin_groups": {
+    "description": "机器人是管理员的群",
+    "hint": "填写群号。列在这里的群允许撤回时间超过 2 分钟；没列出的群会自动查询机器人的群身份（见 auto_detect_bot_admin）。",
+    "type": "list",
+    "default": []
+  },
+  "auto_detect_bot_admin": {
+    "description": "自动查询机器人的群身份",
+    "hint": "开启后，当撤回时间超过 2 分钟且该群不在 admin_groups 里时，会调用 get_group_member_info 判断机器人是否为管理员/群主。",
+    "type": "bool",
+    "default": true
+  },
+  "activity_days": {
+    "description": "只抽最近发过言的群友",
+    "hint": "0 = 不限制；大于 0 时只会从最近 N 天在群里发过言的群友中抽取。依赖协议端的 get_group_msg_history 接口，不支持时会自动忽略该限制。",
+    "type": "int",
+    "default": 0
+  },
+  "activity_max_pages": {
+    "description": "拉取历史消息的最大页数",
+    "hint": "每页 100 条。群消息很多时可以调大，越大越慢。",
+    "type": "int",
+    "default": 10
+  },
+  "exclude_requester": {
+    "description": "不抽发指令的人自己",
+    "hint": "关闭后自己也可能被抽中。",
+    "type": "bool",
+    "default": true
+  },
+  "exclude_bots": {
+    "description": "不抽群里的其它机器人",
+    "hint": "需要协议端在群成员信息里给出 is_robot 字段（NapCat / LLOneBot 支持）。",
+    "type": "bool",
+    "default": true
+  },
+  "whitelist_groups": {
+    "description": "群白名单",
+    "hint": "填写群号。留空 = 不启用白名单（所有群都能用）；一旦填写，只有名单内的群能用。",
+    "type": "list",
+    "default": []
+  },
+  "blacklist_groups": {
+    "description": "群黑名单",
+    "hint": "填写群号。留空 = 不启用黑名单；名单内的群不响应「娶」和「换一个」。黑名单优先于白名单。",
+    "type": "list",
+    "default": []
+  },
+  "recall_previous_on_change": {
+    "description": "换一个时撤回上一条结果",
+    "hint": "开启后会立即撤回上一次的抽取结果，群里只保留最新的那一条。",
+    "type": "bool",
+    "default": true
+  }
+}

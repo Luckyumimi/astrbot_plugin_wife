@@ -1,0 +1,13 @@
+name: astrbot_plugin_wife
+display_name: 娶老婆
+desc: 发送「娶」随机抽一位群友当今天的对象，支持「换一个」、定时撤回、活跃度筛选与群黑白名单
+short_desc: 群友随机对象抽签
+version: 1.0.0
+author: Luckyumimi
+repo: https://github.com/Luckyumimi/astrbot_plugin_wife
+astrbot_version: ">=4.17.0"
+support_platforms:
+  - aiocqhttp
+tags:
+  - 娱乐
+  - 群聊
